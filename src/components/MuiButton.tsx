@@ -1,4 +1,4 @@
-import { Stack, Button, IconButton } from "@mui/material"
+import { Stack, Button, IconButton, ButtonGroup } from "@mui/material"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 
@@ -24,13 +24,20 @@ export const MuiButton = () => {
         </Stack>
         <Stack spacing={2} direction='row' display='block'>
             <Button variant='text' startIcon={<AccountCircleIcon />}> Samuel R.</Button>
-            <Button variant='contained' endIcon={<AccountCircleIcon />}> Profile</Button>
+            <Button variant='contained' endIcon={<AccountCircleIcon />} disableElevation disableRipple onClick={() => alert('Login Before')}> Profile</Button>
             <IconButton aria-label='login' size="small">
                 <LoginIcon /> 
             </IconButton>
-            <IconButton aria-label='login' color="secondary" size="small">
+            <IconButton aria-label='login' color="success" size="small">
                 <AccountCircleIcon /> 
             </IconButton>
+        </Stack>
+        <Stack direction='row'>
+            <ButtonGroup variant="contained" orientation="vertical" size="small" color="secondary" aria-aria-label="alignment button group">
+                <Button onClick={() => alert('before click')}>Before</Button>
+                <Button>Next</Button>
+                <Button>Last</Button>
+            </ButtonGroup>
         </Stack>
     </Stack>
   )
