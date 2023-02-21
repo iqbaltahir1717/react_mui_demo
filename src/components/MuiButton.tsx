@@ -1,8 +1,17 @@
-import { Stack, Button, IconButton, ButtonGroup } from "@mui/material"
+import { Stack, Button, IconButton, ButtonGroup, ToggleButtonGroup, ToggleButton } from "@mui/material"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
+import { FormatBold, FormatItalic, FormatUnderlined } from '@mui/icons-material';
+import { useState } from "react";
 
 export const MuiButton = () => {
+    const [formats, setFormats] = useState<string[]>([])
+    console.log({
+        formats
+    })
+    const handleFormatChange = (_event: React.MouseEvent<HTMLElement>, updatedFormats: string[]) => {
+        setFormats(updatedFormats)
+    }
   return (
     <Stack spacing={4}>
         <Stack spacing={2} direction='row'>
@@ -33,11 +42,19 @@ export const MuiButton = () => {
             </IconButton>
         </Stack>
         <Stack direction='row'>
-            <ButtonGroup variant="contained" orientation="vertical" size="small" color="secondary" aria-aria-label="alignment button group">
+            <ButtonGroup variant="contained" orientation="vertical" size="small" color="secondary" aria-label="alignment button group">
                 <Button onClick={() => alert('before click')}>Before</Button>
                 <Button>Next</Button>
                 <Button>Last</Button>
             </ButtonGroup>
+        </Stack>
+        <Stack direction='row'>
+            <ToggleButtonGroup arial-label='text formatting' value={formats} onChange={handleFormatChange}>
+                <ToggleButton value='bold' arial-label='bold'><FormatBold /></ToggleButton>
+                <ToggleButton value='italic' arial-label='italic'><FormatItalic /></ToggleButton>
+                <ToggleButton value='underlined' arial-label='underlined'><FormatUnderlined /></ToggleButton>
+            </ToggleButtonGroup>
+
         </Stack>
     </Stack>
   )
